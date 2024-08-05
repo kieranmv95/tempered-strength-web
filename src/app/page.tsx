@@ -3,6 +3,7 @@ const Home = () => {
     <main>
       <div>
         <h1>Tempered Strength</h1>
+        <p>Coming Soon</p>
       </div>
     </main>
   );
