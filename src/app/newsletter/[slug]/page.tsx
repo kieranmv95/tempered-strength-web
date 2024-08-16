@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Newsletter } from '@/types/Newsletter';
+import type { Newsletter } from '@/types/Newsletter';
 import RichTextRenderer from '@/components/RichTextRenderer';
 import { formatDate } from '@/helpers/dateFormatting';
 import Link from 'next/link';

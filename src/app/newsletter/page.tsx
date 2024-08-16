@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NewsletterShort } from '@/types/NewsLetterShort';
+import type { NewsletterShort } from '@/types/NewsLetterShort';
 import { formatDate } from '@/helpers/dateFormatting';
 import paths from '@/app/pathHelper';
 

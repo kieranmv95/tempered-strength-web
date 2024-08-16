@@ -1,4 +1,4 @@
-import { NewsletterShort } from '@/types/NewsLetterShort';
+import type { NewsletterShort } from '@/types/NewsLetterShort';
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
 
