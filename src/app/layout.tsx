@@ -16,7 +16,9 @@ type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} w-full h-screen bg-zinc-800 text-white`}
+      >
         {children}
         <Analytics />
       </body>
