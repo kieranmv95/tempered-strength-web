@@ -48,22 +48,24 @@ const Newsletter = async () => {
         Back to home
       </Link>
       <h1 className="text-2xl font-bold mb-3">Newsletters</h1>
-      <ul>
-        {entries.map((newsletter) => (
-          <li key={newsletter.sys.id}>
-            <Link
-              href={paths.newsletter.slug.route(newsletter.slug)}
-              className="text-amber-300 hover:underline"
-            >
-              <div className="text-xs text-white">
-                {formatDate(newsletter.date)}
-              </div>
-              <div>{newsletter.title}</div>
-              <div className="text-white">{newsletter.shortDescription}</div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {entries && (
+        <ul>
+          {entries.map((newsletter) => (
+            <li key={newsletter.sys.id}>
+              <Link
+                href={paths.newsletter.slug.route(newsletter.slug)}
+                className="text-amber-300 hover:underline"
+              >
+                <div className="text-xs text-white">
+                  {formatDate(newsletter.date)}
+                </div>
+                <div>{newsletter.title}</div>
+                <div className="text-white">{newsletter.shortDescription}</div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
