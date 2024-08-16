@@ -1,4 +1,3 @@
-import type { Node } from '@contentful/rich-text-types';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
