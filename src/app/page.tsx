@@ -39,7 +39,7 @@ const Home = async () => {
   const entries = await fetchNewsLetters();
 
   return (
-    <main className="w-full h-full grid items-center">
+    <main className="p-8 w-full h-full grid items-center">
       <div className="text-center">
         <h1 className="text-2xl font-bold mb-3">TEMPERED STRENGTH</h1>
         {entries && (
