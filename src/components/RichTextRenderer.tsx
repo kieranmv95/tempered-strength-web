@@ -15,6 +15,9 @@ const options = {
     [BLOCKS.UL_LIST]: (node: any, next: any) => {
       return `<ul class="list-disc pl-4 space-y-1">${next(node.content)}</ul>`;
     },
+    [BLOCKS.HEADING_4]: (node: any, next: any) => {
+      return `<h4 class="text-xl font-semibold mb-2">${next(node.content)}</h4>`;
+    },
     [INLINES.HYPERLINK]: (node: any) => {
       const { uri } = node.data as { uri: string }; // Type assertion for node.data
       return `<a href="${uri}" class="text-amber-300 hover:underline">${node.content[0].value}</a>`;
