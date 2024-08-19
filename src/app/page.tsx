@@ -39,12 +39,13 @@ const Home = async () => {
   const entries = await fetchNewsLetters();
 
   return (
-    <main className="p-8 w-full h-full grid items-center">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold mb-3">TEMPERED STRENGTH</h1>
-        {entries && (
-          <ul>
-            {entries.map((newsletter) => (
+    <main className="p-8 max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold mb-3">Latest Newsletters</h1>
+      {entries && (
+        <ul className="grid gap-3">
+          {entries
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((newsletter) => (
               <li key={newsletter.sys.id}>
                 <Link
                   href={paths.newsletter.slug.route(newsletter.slug)}
@@ -54,9 +55,8 @@ const Home = async () => {
                 </Link>
               </li>
             ))}
-          </ul>
-        )}
-      </div>
+        </ul>
+      )}
     </main>
   );
 };
