@@ -16,9 +16,12 @@ const Header = () => (
           priority
         />
       </Link>
-      <div>
+      <div className="ml-4">
         <Link className="p-4 hover:underline" href={paths.newsletter.route}>
-          Newsletter
+          {paths.newsletter.friendlyName}
+        </Link>
+        <Link className="p-4 hover:underline" href={paths.tools.route}>
+          {paths.tools.friendlyName}
         </Link>
       </div>
     </nav>

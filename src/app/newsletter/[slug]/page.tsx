@@ -54,7 +54,7 @@ const Newsletter = async ({ params }: { params: { slug: string } }) => {
         href={paths.newsletter.route}
         className="text-amber-300 hover:underline mb-4 block"
       >
-        Back to newsletters
+        Back to {paths.newsletter.friendlyName}
       </Link>
       <div>
         <h1 className="text-2xl font-bold mb-3">{data.title}</h1>
