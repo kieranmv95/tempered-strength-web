@@ -29,3 +29,8 @@ export const formatDate = (dateString: string): string => {
 
   return `${day}${suffix} ${months[month]} ${year}`;
 };
+
+// Array method for sorting by date
+export const sortByDate = (a: { date: string }, b: { date: string }) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+};

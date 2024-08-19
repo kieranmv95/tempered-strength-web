@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import Header from '@/components/Header';
 
 import './globals.css';
 
@@ -19,6 +20,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body
         className={`${inter.className} w-full h-screen bg-zinc-800 text-white`}
       >
+        <Header />
         {children}
         <Analytics />
       </body>
