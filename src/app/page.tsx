@@ -1,6 +1,7 @@
 import type { NewsletterShort } from '@/types/NewsLetterShort';
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
+import { sortByDate } from '@/helpers/dateFormatting';
 
 const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
   const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/`;
@@ -44,7 +45,7 @@ const Home = async () => {
       {entries && (
         <ul className="grid gap-3">
           {entries
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .sort((a, b) => sortByDate(a, b))
             .map((newsletter) => (
               <li key={newsletter.sys.id}>
                 <Link

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { NewsletterShort } from '@/types/NewsLetterShort';
-import { formatDate } from '@/helpers/dateFormatting';
+import { formatDate, sortByDate } from '@/helpers/dateFormatting';
 import paths from '@/app/pathHelper';
 
 const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
@@ -45,7 +45,7 @@ const Newsletter = async () => {
       {entries && (
         <ul className="grid gap-6">
           {entries
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .sort((a, b) => sortByDate(a, b))
             .map((newsletter) => (
               <li key={newsletter.sys.id}>
                 <Link
