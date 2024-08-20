@@ -46,10 +46,9 @@ const fetchNewsLetterBySlug = async (
   return json.data.newsLetterCollection.items[0] as Newsletter | undefined;
 };
 
-export async function generateMetadata(
-  { params }: NewsletterProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: NewsletterProps): Promise<Metadata> {
   const data = await fetchNewsLetterBySlug(params.slug);
 
   return {
