@@ -2,6 +2,13 @@ import Link from 'next/link';
 import type { NewsletterShort } from '@/types/NewsLetterShort';
 import { formatDate, sortByDate } from '@/helpers/dateFormatting';
 import paths from '@/app/pathHelper';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Newsletters | Tempered Strength',
+  description:
+    'Stay up to date with whats happening in the Tempered Strength world',
+};
 
 const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
   const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/`;

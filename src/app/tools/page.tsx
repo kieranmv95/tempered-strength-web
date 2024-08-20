@@ -1,5 +1,12 @@
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Tools | Tempered Strength',
+  description:
+    'All the tools to help yoju on your fitness journey, in one place.',
+};
 
 const HealthTermGlossary = () => {
   return (
