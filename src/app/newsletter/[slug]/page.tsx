@@ -4,7 +4,7 @@ import RichTextRenderer from '@/components/RichTextRenderer';
 import { formatDate } from '@/helpers/dateFormatting';
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 type NewsletterProps = { params: { slug: string } };
 
