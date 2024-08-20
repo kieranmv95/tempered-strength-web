@@ -4,6 +4,9 @@ import RichTextRenderer from '@/components/RichTextRenderer';
 import { formatDate } from '@/helpers/dateFormatting';
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type NewsletterProps = { params: { slug: string } };
 
 const fetchNewsLetterBySlug = async (
   slug: string
@@ -43,7 +46,19 @@ const fetchNewsLetterBySlug = async (
   return json.data.newsLetterCollection.items[0] as Newsletter | undefined;
 };
 
-const Newsletter = async ({ params }: { params: { slug: string } }) => {
+export async function generateMetadata(
+  { params }: NewsletterProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const data = await fetchNewsLetterBySlug(params.slug);
+
+  return {
+    title: `${data?.title} | Tempered Strength`,
+    description: data?.shortDescription,
+  };
+}
+
+const Newsletter = async ({ params }: NewsletterProps) => {
   const data = await fetchNewsLetterBySlug(params.slug);
 
   if (!data) notFound();
