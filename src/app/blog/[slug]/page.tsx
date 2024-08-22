@@ -64,9 +64,31 @@ export async function generateMetadata({
 }: BlogPostProps): Promise<Metadata> {
   const data = await fetchBlogBySlug(params.slug);
 
+  if (!data) {
+    return {
+      title: '${data?.title} | Tempered Strength',
+    };
+  }
+
   return {
-    title: `${data?.title} | Tempered Strength`,
-    description: data?.summary,
+    title: `${data.title} | Tempered Strength`,
+    description: data.summary,
+    openGraph: {
+      title: `${data.title} | Tempered Strength`,
+      description: data.summary,
+      images: [
+        {
+          url: data.featuredImage.url,
+          alt: data.featuredImage.title,
+        },
+      ],
+      authors: [
+        {
+          username: data.author.name,
+        },
+      ],
+      type: 'article',
+    },
   };
 }
 
