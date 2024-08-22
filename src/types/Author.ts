@@ -3,4 +3,12 @@ import type { ContentfulImage } from '@/types/ContentfulImage';
 
 export type Author = AuthorShort & {
   profilePicture: ContentfulImage;
+  bio: {
+    json: any;
+  };
+  links: {
+    ig?: string;
+    threads?: string;
+  };
+  topics: string[];
 };

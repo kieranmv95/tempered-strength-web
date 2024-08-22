@@ -4,6 +4,7 @@ import paths from '@/app/pathHelper';
 import { sortByDate } from '@/helpers/dateFormatting';
 import type { NewsletterShort } from '@/types/NewsLetterShort';
 import type { BlogPostShort } from '@/types/BlogPostShort';
+import BlogPostBlock from '@/components/BlogPostBlock';
 
 export const metadata: Metadata = {
   title: 'Tempered Strength',
@@ -15,7 +16,7 @@ const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env
 const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
   const query = `
     query {
-      newsLetterCollection {
+      newsLetterCollection (preview: ${process.env.CONTENTFUL_PREVIEW}) {
         items {
           sys {
             id
@@ -46,7 +47,7 @@ const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
 const fetchBlogPosts = async (): Promise<BlogPostShort[] | undefined> => {
   const query = `
     query {
-      blogPostCollection {
+      blogPostCollection (preview: ${process.env.CONTENTFUL_PREVIEW}) {
         items {
           sys {
             id
@@ -96,34 +97,7 @@ const Home = async () => {
           {blogs
             .sort((a, b) => sortByDate(a, b, 'publishedDate'))
             .map((blog) => (
-              <Link
-                key={blog.title}
-                href={paths.blog.slug.route(blog.slug)}
-                className="rounded-md overflow-hidden bg-gray-700"
-              >
-                <div className="w-full h-40">
-                  <img
-                    alt={blog.featuredImage.description}
-                    src={blog.featuredImage.url}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-4">
-                  <div>{blog.title}</div>
-                  <div className="flex gap-2 mt-2">
-                    {blog.category.map((category) => (
-                      <div
-                        key={category}
-                        className="text-xs p-2 rounded bg-zinc-800"
-                      >
-                        {category}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-sm mt-2">By {blog.author.name}</div>
-                </div>
-              </Link>
+              <BlogPostBlock key={blog.title} blog={blog} />
             ))}
         </div>
       )}
