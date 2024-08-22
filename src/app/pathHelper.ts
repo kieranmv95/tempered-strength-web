@@ -19,6 +19,14 @@ const tools = {
   },
 };
 
+const blog = {
+  route: `/blog`,
+  friendlyName: 'Blog',
+  slug: {
+    route: (slug: string) => `/blog/${slug}`,
+  },
+};
+
 const paths = {
   home: {
     route: `/`,
@@ -26,6 +34,7 @@ const paths = {
   },
   newsletter,
   tools,
+  blog,
 };
 
 export default paths;
