@@ -13,6 +13,10 @@ const tools = {
     route: '/tools/health-term-glossary',
     friendlyName: 'Health Term Glossary',
   },
+  heartRateZones: {
+    route: '/tools/heart-rate-zones',
+    friendlyName: 'Heart Rate Zones',
+  },
 };
 
 const paths = {
