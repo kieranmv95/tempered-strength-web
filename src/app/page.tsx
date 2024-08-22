@@ -47,6 +47,25 @@ const Home = async () => {
 
   return (
     <main className="p-4 lg:p-8 max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold mb-3">Tools</h1>
+      <ul className="grid gap-3 mb-6">
+        <li>
+          <Link
+            href={paths.tools.healthTermGlossary.route}
+            className="text-amber-300 hover:underline"
+          >
+            {paths.tools.healthTermGlossary.friendlyName}
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={paths.tools.heartRateZones.route}
+            className="text-amber-300 hover:underline"
+          >
+            {paths.tools.heartRateZones.friendlyName}
+          </Link>
+        </li>
+      </ul>
       <h1 className="text-2xl font-bold mb-3">Latest Newsletters</h1>
       {entries && (
         <ul className="grid gap-3">
