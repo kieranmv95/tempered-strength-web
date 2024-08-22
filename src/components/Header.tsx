@@ -4,7 +4,7 @@ import paths from '@/app/pathHelper';
 import TemperedStrengthSvg from '@/assets/TemperedStrength.svg';
 
 const Header = () => (
-  <header className="px-8 py-4 max-w-3xl mx-auto">
+  <header className="px-4 lg:px-8 py-4 max-w-3xl mx-auto">
     <nav className="flex items-center">
       <Link href={paths.home.route}>
         <Image
@@ -16,7 +16,7 @@ const Header = () => (
           priority
         />
       </Link>
-      <div className="ml-4">
+      <div className="ml-4 flex">
         <Link className="p-4 hover:underline" href={paths.newsletter.route}>
           {paths.newsletter.friendlyName}
         </Link>

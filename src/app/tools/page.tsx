@@ -10,15 +10,23 @@ export const metadata: Metadata = {
 
 const HealthTermGlossary = () => {
   return (
-    <main className="p-8 max-w-3xl mx-auto">
+    <main className="p-4 lg:p-8 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold mb-3">Tools</h1>
 
-      <Link
-        href={paths.tools.healthTermGlossary.route}
-        className="text-amber-300 hover:underline py-4 pr-4"
-      >
-        {paths.tools.healthTermGlossary.friendlyName}
-      </Link>
+      <div className="grid">
+        <Link
+          href={paths.tools.healthTermGlossary.route}
+          className="text-amber-300 hover:underline py-4 pr-4"
+        >
+          {paths.tools.healthTermGlossary.friendlyName}
+        </Link>
+        <Link
+          href={paths.tools.heartRateZones.route}
+          className="text-amber-300 hover:underline py-4 pr-4"
+        >
+          {paths.tools.heartRateZones.friendlyName}
+        </Link>
+      </div>
     </main>
   );
 };

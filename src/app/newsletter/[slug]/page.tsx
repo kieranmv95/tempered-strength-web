@@ -63,7 +63,7 @@ const Newsletter = async ({ params }: NewsletterProps) => {
   if (!data) notFound();
 
   return (
-    <main className="p-8 max-w-3xl mx-auto">
+    <main className="p-4 lg:p-8 max-w-3xl mx-auto">
       <Link
         href={paths.newsletter.route}
         className="text-amber-300 hover:underline mb-4 block"
