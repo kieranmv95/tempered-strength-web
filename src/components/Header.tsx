@@ -17,10 +17,16 @@ const Header = () => (
         />
       </Link>
       <div className="ml-4 flex">
-        <Link className="p-4 hover:underline" href={paths.newsletter.route}>
+        <Link
+          className="p-2 md:p-4 hover:underline"
+          href={paths.newsletter.route}
+        >
           {paths.newsletter.friendlyName}
         </Link>
-        <Link className="p-4 hover:underline" href={paths.tools.route}>
+        <Link className="p-2 md:p-4 hover:underline" href={paths.blog.route}>
+          {paths.blog.friendlyName}
+        </Link>
+        <Link className="p-2 md:p-4 hover:underline" href={paths.tools.route}>
           {paths.tools.friendlyName}
         </Link>
       </div>

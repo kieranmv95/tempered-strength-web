@@ -31,6 +31,6 @@ export const formatDate = (dateString: string): string => {
 };
 
 // Array method for sorting by date
-export const sortByDate = (a: { date: string }, b: { date: string }) => {
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
+export const sortByDate = (a, b, fieldName: string = 'date') => {
+  return new Date(b[fieldName]).getTime() - new Date(a[fieldName]).getTime();
 };
