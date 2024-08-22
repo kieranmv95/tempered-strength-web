@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const HealthTermGlossary = () => (
-  <main className="p-8 max-w-3xl mx-auto">
+  <main className="p-4 lg:p-8 max-w-3xl mx-auto">
     <Link
       href={paths.tools.route}
       className="text-amber-300 hover:underline mb-4 block"
