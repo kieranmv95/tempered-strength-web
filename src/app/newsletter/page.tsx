@@ -15,7 +15,7 @@ const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
 
   const query = `
     query {
-      newsLetterCollection {
+      newsLetterCollection (preview: ${process.env.CONTENTFUL_PREVIEW}) {
         items {
           sys {
             id

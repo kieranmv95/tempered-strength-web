@@ -27,6 +27,14 @@ const blog = {
   },
 };
 
+const author = {
+  route: `/author`,
+  friendlyName: 'Authors',
+  slug: {
+    route: (slug: string) => `/author/${slug}`,
+  },
+};
+
 const paths = {
   home: {
     route: `/`,
@@ -35,6 +43,7 @@ const paths = {
   newsletter,
   tools,
   blog,
+  author,
 };
 
 export default paths;

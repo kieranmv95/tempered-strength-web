@@ -15,7 +15,7 @@ const fetchNewsLetterBySlug = async (
 
   const query = `
     query {
-      newsLetterCollection (where: { slug: "${slug}" }) {
+      newsLetterCollection (preview: ${process.env.CONTENTFUL_PREVIEW}, where: { slug: "${slug}" }) {
         items {
           sys {
             id

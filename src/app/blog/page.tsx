@@ -3,6 +3,7 @@ import { formatDate, sortByDate } from '@/helpers/dateFormatting';
 import paths from '@/app/pathHelper';
 import type { Metadata } from 'next';
 import type { BlogPostShort } from '@/types/BlogPostShort';
+import BlogPostBlock from '@/components/BlogPostBlock';
 
 export const metadata: Metadata = {
   title: 'Blog Posts | Tempered Strength',
@@ -14,7 +15,7 @@ const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env
 const fetchBlogPosts = async (): Promise<BlogPostShort[] | undefined> => {
   const query = `
     query {
-      blogPostCollection {
+      blogPostCollection (preview: ${process.env.CONTENTFUL_PREVIEW}) {
         items {
           sys {
             id
@@ -57,7 +58,7 @@ const fetchBlogPosts = async (): Promise<BlogPostShort[] | undefined> => {
   return json.data.blogPostCollection.items;
 };
 
-const Newsletter = async () => {
+const BlogPosts = async () => {
   const blogs = await fetchBlogPosts();
 
   return (
@@ -68,34 +69,7 @@ const Newsletter = async () => {
           {blogs
             .sort((a, b) => sortByDate(a, b, 'publishedDate'))
             .map((blog) => (
-              <Link
-                key={blog.title}
-                href={paths.blog.slug.route(blog.slug)}
-                className="rounded-md overflow-hidden bg-gray-700"
-              >
-                <div className="w-full h-40">
-                  <img
-                    alt={blog.featuredImage.description}
-                    src={blog.featuredImage.url}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-4">
-                  <div>{blog.title}</div>
-                  <div className="flex gap-2 mt-2">
-                    {blog.category.map((category) => (
-                      <div
-                        key={category}
-                        className="text-sm p-2 rounded bg-zinc-800"
-                      >
-                        {category}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-sm mt-2">By {blog.author.name}</div>
-                </div>
-              </Link>
+              <BlogPostBlock key={blog.title} blog={blog} />
             ))}
         </div>
       )}
@@ -103,4 +77,4 @@ const Newsletter = async () => {
   );
 };
 
-export default Newsletter;
+export default BlogPosts;

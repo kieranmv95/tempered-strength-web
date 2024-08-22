@@ -13,7 +13,7 @@ const fetchBlogBySlug = async (slug: string): Promise<BlogPost | undefined> => {
 
   const query = `
     query {
-      blogPostCollection (where: { slug: "${slug}" }) {
+      blogPostCollection (preview: ${process.env.CONTENTFUL_PREVIEW}, where: { slug: "${slug}" }) {
         items {
           sys {
             id
@@ -31,6 +31,7 @@ const fetchBlogBySlug = async (slug: string): Promise<BlogPost | undefined> => {
           category
           author {
             name
+            slug
             profilePicture {
               url
               title
@@ -103,24 +104,30 @@ const BlogPost = async ({ params }: BlogPostProps) => {
       <div>
         <h1 className="text-2xl font-bold mb-3">{data.title}</h1>
         <p className="mb-4">
-          {formatDate(data.publishedDate)}, {data.readTime} minute read time
+          {formatDate(data.publishedDate)}, {data.readTime} minute read
         </p>
-        <div className="w-full h-40 md:h-72 mb-4">
+        <div className="w-full h-60 md:h-96 mb-4">
           <img
             alt={data.featuredImage.description}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded overflow-hidden"
             src={data.featuredImage.url}
           />
         </div>
+
         <RichTextRenderer json={data.body.json} />
-        <div className="mb-4 flex gap-3 items-center">
+
+        <Link
+          className="mb-4 flex gap-3 items-center hover:underline mt-4"
+          href={paths.author.slug.route(data.author.slug)}
+        >
           <img
             className="rounded-full overflow-hidden w-12 h-12"
             src={data.author.profilePicture.url}
             alt={data.author.profilePicture.description}
           />
+
           <p>By {data.author.name}</p>
-        </div>
+        </Link>
       </div>
     </main>
   );
