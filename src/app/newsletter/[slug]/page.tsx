@@ -51,9 +51,20 @@ export async function generateMetadata({
 }: NewsletterProps): Promise<Metadata> {
   const data = await fetchNewsLetterBySlug(params.slug);
 
+  if (!data) {
+    return {
+      title: `Newsletter | Tempered Strength`,
+    };
+  }
+
   return {
-    title: `${data?.title} | Tempered Strength`,
-    description: data?.shortDescription,
+    title: `${data.title} | Tempered Strength`,
+    description: data.shortDescription,
+    openGraph: {
+      title: `${data.title} | Tempered Strength`,
+      description: data.shortDescription,
+      type: 'article',
+    },
   };
 }
 
