@@ -82,11 +82,6 @@ export async function generateMetadata({
           alt: data.featuredImage.title,
         },
       ],
-      authors: [
-        {
-          username: data.author.name,
-        },
-      ],
       type: 'article',
     },
   };
