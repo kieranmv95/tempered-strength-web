@@ -7,9 +7,9 @@ const BlogPostBlock = ({ blog }: { blog: BlogPostShort }) => (
   <Link
     key={blog.title}
     href={paths.blog.slug.route(blog.slug)}
-    className="rounded-md overflow-hidden bg-gray-700"
+    className="overflow-hidden"
   >
-    <div className="w-full h-52">
+    <div className="w-full h-36 sm:h-48 md:h-52">
       <img
         alt={blog.featuredImage.description}
         src={blog.featuredImage.url}
@@ -17,16 +17,15 @@ const BlogPostBlock = ({ blog }: { blog: BlogPostShort }) => (
       />
     </div>
 
-    <div className="p-4">
-      <div>{blog.title}</div>
-      <div className="flex gap-2 mt-2">
+    <div className="py-2 sm:py-3">
+      <div className="sm:text-md md:text-lg">{blog.title}</div>
+      <div className="flex gap-2 mt-2 md:mt-3">
         {blog.category.map((category) => (
-          <div key={category} className="text-xs p-2 rounded bg-zinc-800">
+          <div key={category} className="text-xs px-2 py-1 rounded bg-zinc-700">
             {category}
           </div>
         ))}
       </div>
-      <div className="text-sm mt-2">By {blog.author.name}</div>
     </div>
   </Link>
 );

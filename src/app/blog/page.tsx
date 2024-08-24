@@ -63,9 +63,9 @@ const BlogPosts = async () => {
 
   return (
     <main className="p-4 lg:p-8 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-3">Blog Posts</h1>
+      <h1 className="text-2xl font-bold mb-4">Blog Posts</h1>
       {blogs && (
-        <div className="grid gap-3 mb-6 md:grid-cols-2">
+        <div className="grid gap-4 mb-6 grid-cols-2 md:gap-6">
           {blogs
             .sort((a, b) => sortByDate(a, b, 'publishedDate'))
             .map((blog) => (
