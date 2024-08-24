@@ -6,4 +6,5 @@ export type NewsletterShort = {
   slug: string;
   shortDescription: string;
   date: string;
+  episode: number;
 };

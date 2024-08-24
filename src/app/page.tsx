@@ -25,6 +25,7 @@ const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
           title
           slug
           shortDescription
+          episode
         }
       }
     }
@@ -62,9 +63,6 @@ const fetchBlogPosts = async (): Promise<BlogPostShort[] | undefined> => {
             title
             description
           }
-          author {
-            name
-          }
           category
         }
       }
@@ -91,9 +89,9 @@ const Home = async () => {
 
   return (
     <main className="p-4 lg:p-8 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-3">Latest Blog Posts</h1>
+      <h1 className="text-2xl font-bold mb-4">Latest Blog Posts</h1>
       {blogs && (
-        <div className="grid gap-3 mb-6 md:grid-cols-2">
+        <div className="grid gap-4 mb-6 grid-cols-2 md:gap-6">
           {blogs
             .sort((a, b) => sortByDate(a, b, 'publishedDate'))
             .map((blog) => (
@@ -101,7 +99,25 @@ const Home = async () => {
             ))}
         </div>
       )}
-      <h1 className="text-2xl font-bold mb-3">Tools</h1>
+      <h1 className="text-2xl font-bold mb-4">Latest Newsletters</h1>
+      {newsletters && (
+        <ul className="grid gap-3 mb-6">
+          {newsletters
+            .sort((a, b) => sortByDate(a, b))
+            .map((newsletter) => (
+              <li key={newsletter.sys.id}>
+                <Link
+                  href={paths.newsletter.slug.route(newsletter.slug)}
+                  className="hover:underline grid grid-cols-[auto_1fr] gap-2"
+                >
+                  <span className="text-amber-300">{newsletter.episode}.</span>
+                  {newsletter.title}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      )}
+      <h1 className="text-2xl font-bold mb-4">Tools</h1>
       <ul className="grid gap-3 mb-6">
         <li>
           <Link
@@ -120,23 +136,6 @@ const Home = async () => {
           </Link>
         </li>
       </ul>
-      <h1 className="text-2xl font-bold mb-3">Latest Newsletters</h1>
-      {newsletters && (
-        <ul className="grid gap-3">
-          {newsletters
-            .sort((a, b) => sortByDate(a, b))
-            .map((newsletter) => (
-              <li key={newsletter.sys.id}>
-                <Link
-                  href={paths.newsletter.slug.route(newsletter.slug)}
-                  className="text-amber-300 hover:underline"
-                >
-                  {newsletter.title}
-                </Link>
-              </li>
-            ))}
-        </ul>
-      )}
     </main>
   );
 };

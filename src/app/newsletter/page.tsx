@@ -23,6 +23,7 @@ const fetchNewsLetters = async (): Promise<NewsletterShort[] | undefined> => {
           date
           title
           slug
+          episode
           shortDescription
         }
       }
@@ -62,7 +63,9 @@ const Newsletter = async () => {
                   <div className="text-xs text-white">
                     {formatDate(newsletter.date)}
                   </div>
-                  <div>{newsletter.title}</div>
+                  <div>
+                    {newsletter.episode}. {newsletter.title}
+                  </div>
                   <div className="text-white">
                     {newsletter.shortDescription}
                   </div>

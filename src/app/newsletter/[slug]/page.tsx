@@ -22,6 +22,7 @@ const fetchNewsLetterBySlug = async (
           }
           title
           slug
+          episode
           date
           shortDescription
           newsLetterBody {
@@ -58,7 +59,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${data.title} | Tempered Strength`,
+    title: `${data.episode}. ${data.title} | Tempered Strength`,
     description: data.shortDescription,
     openGraph: {
       title: `${data.title} | Tempered Strength`,
@@ -82,7 +83,9 @@ const Newsletter = async ({ params }: NewsletterProps) => {
         Back to {paths.newsletter.friendlyName}
       </Link>
       <div>
-        <h1 className="text-2xl font-bold mb-3">{data.title}</h1>
+        <h1 className="text-2xl font-bold mb-3">
+          {data.episode}. {data.title}
+        </h1>
         <p className="mb-8">{formatDate(data.date)}</p>
 
         <RichTextRenderer json={data.newsLetterBody.json} />
