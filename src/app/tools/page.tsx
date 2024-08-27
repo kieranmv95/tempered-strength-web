@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
+
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -16,13 +17,13 @@ const HealthTermGlossary = () => {
       <div className="grid">
         <Link
           href={paths.tools.healthTermGlossary.route}
-          className="text-amber-300 hover:underline py-4 pr-4"
+          className="text-amber-300 hover:underline py-3 pr-3"
         >
           {paths.tools.healthTermGlossary.friendlyName}
         </Link>
         <Link
           href={paths.tools.heartRateZones.route}
-          className="text-amber-300 hover:underline py-4 pr-4"
+          className="text-amber-300 hover:underline py-3 pr-3"
         >
           {paths.tools.heartRateZones.friendlyName}
         </Link>

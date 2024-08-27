@@ -3,7 +3,7 @@ import Image from 'next/image';
 import paths from '@/app/pathHelper';
 import TemperedStrengthSvg from '@/assets/TemperedStrength.svg';
 
-const Header = () => (
+export const Header = () => (
   <header className="px-4 lg:px-8 py-4 max-w-3xl mx-auto">
     <nav className="flex items-center">
       <Link href={paths.home.route}>
@@ -33,5 +33,3 @@ const Header = () => (
     </nav>
   </header>
 );
-
-export default Header;

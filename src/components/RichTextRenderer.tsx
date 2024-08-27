@@ -31,11 +31,9 @@ const options = {
   },
 };
 
-const RichTextRenderer = ({ json }: RichTextRendererProps) => (
+export const RichTextRenderer = ({ json }: RichTextRendererProps) => (
   <div
     className="space-y-6 leading-7"
     dangerouslySetInnerHTML={{ __html: documentToHtmlString(json, options) }}
   />
 );
-
-export default RichTextRenderer;

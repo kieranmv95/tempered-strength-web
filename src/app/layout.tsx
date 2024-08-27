@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
-import Header from '@/components/Header';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Header, Footer } from '@/components';
 
 import './globals.css';
 
@@ -22,6 +23,8 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       >
         <Header />
         {children}
+        <Footer />
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>

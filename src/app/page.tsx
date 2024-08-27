@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
-import { sortByDate } from '@/helpers/dateFormatting';
+import { sortByDate } from '@/helpers';
+import { BlogPostBlock } from '@/components';
+
+import type { Metadata } from 'next';
 import type { NewsletterShort } from '@/types/NewsLetterShort';
 import type { BlogPostShort } from '@/types/BlogPostShort';
-import BlogPostBlock from '@/components/BlogPostBlock';
 
 export const metadata: Metadata = {
   title: 'Tempered Strength',

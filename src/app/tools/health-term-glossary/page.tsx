@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import paths from '@/app/pathHelper';
 import Glossary from '@/features/glossary';
-import type { Metadata } from 'next';
 import { healthTerms } from '@/app/tools/health-term-glossary/healthTerms';
+
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Health Term Glossary | Tempered Strength',
