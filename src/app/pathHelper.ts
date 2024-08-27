@@ -25,6 +25,9 @@ const blog = {
   slug: {
     route: (slug: string) => `/blog/${slug}`,
   },
+  category: {
+    route: (slug: string) => `/blog/category/${slug}`,
+  },
 };
 
 const author = {

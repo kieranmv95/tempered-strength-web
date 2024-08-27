@@ -1,12 +1,11 @@
 import { notFound } from 'next/navigation';
-import RichTextRenderer from '@/components/RichTextRenderer';
-import { formatDate, sortByDate } from '@/helpers/dateFormatting';
 import Link from 'next/link';
+import { sortByDate } from '@/helpers';
 import paths from '@/app/pathHelper';
+import { BlogPostBlock, SocialIcon, RichTextRenderer } from '@/components';
+
 import type { Metadata } from 'next';
-import type { Author } from '@/types/Author';
-import BlogPostBlock from '@/components/BlogPostBlock';
-import { BlogPostShort } from '@/types/BlogPostShort';
+import type { BlogPostShort, Author, SocialPlatforms } from '@/types';
 
 type AuthorProps = { params: { slug: string } };
 
@@ -141,12 +140,21 @@ const BlogPost = async ({ params }: AuthorProps) => {
           />
           <h1 className="text-2xl font-bold">{data.name}</h1>
         </div>
+        <div className="mb-6 flex gap-4">
+          {Object.keys(data.links).map((platform) => (
+            <SocialIcon
+              key={platform}
+              platform={platform as SocialPlatforms}
+              link={data.links[platform as SocialPlatforms]}
+            />
+          ))}
+        </div>
         <RichTextRenderer json={data.bio.json} />
         <h1 className="text-xl font-bold mt-4 mb-4">
           {data.name}&apos;s blog posts
         </h1>
         {blogs && (
-          <div className="grid gap-3 mb-6 md:grid-cols-2">
+          <div className="grid gap-3 mb-6 grid-cols-2">
             {blogs
               .sort((a, b) => sortByDate(a, b, 'publishedDate'))
               .map((blog) => (

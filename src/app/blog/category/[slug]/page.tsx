@@ -1,20 +1,19 @@
+import Link from 'next/link';
 import { sortByDate } from '@/helpers';
 import { BlogPostBlock } from '@/components';
+import paths from '@/app/pathHelper';
 
 import type { Metadata } from 'next';
-import type { BlogPostShort } from '@/types/BlogPostShort';
+import type { BlogPost } from '@/types';
 
-export const metadata: Metadata = {
-  title: 'Blog Posts | Tempered Strength',
-  description: 'All the latest blogs on anything and everything fitness',
-};
+type BlogPostProps = { params: { slug: string } };
 
-const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/`;
+const fetchBlogPostsByCategory = async (slug: string): Promise<BlogPost[]> => {
+  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/`;
 
-const fetchBlogPosts = async (): Promise<BlogPostShort[] | undefined> => {
   const query = `
     query {
-      blogPostCollection (preview: ${process.env.CONTENTFUL_PREVIEW}) {
+      blogPostCollection (preview: ${process.env.CONTENTFUL_PREVIEW}, where: {category_contains_all: "${slug}"}) {
         items {
           sys {
             id
@@ -54,15 +53,28 @@ const fetchBlogPosts = async (): Promise<BlogPostShort[] | undefined> => {
 
   const json = await res.json();
 
-  return json.data.blogPostCollection.items;
+  return (json.data.blogPostCollection.items || []) as BlogPost[];
 };
 
-const BlogPosts = async () => {
-  const blogs = await fetchBlogPosts();
+export const metadata: Metadata = {
+  title: 'Blog Posts | Tempered Strength',
+  description: 'All the latest blogs on anything and everything fitness',
+};
+
+const BlogPostByCategory = async ({ params }: BlogPostProps) => {
+  const blogs = await fetchBlogPostsByCategory(params.slug);
 
   return (
     <main className="p-4 lg:p-8 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Blog Posts</h1>
+      <Link
+        href={paths.blog.route}
+        className="text-amber-300 hover:underline mb-4 block"
+      >
+        Back to all {paths.blog.friendlyName.toLowerCase()}s
+      </Link>
+      <h1 className="text-2xl font-bold mb-2">Blog Posts</h1>
+      <h2 className="text-xl font-bold mb-4">Category: {params.slug}</h2>
+      {!blogs.length && <div>No articles found relating to {params.slug}</div>}
       {blogs && (
         <div className="grid gap-4 mb-6 grid-cols-2 md:gap-6">
           {blogs
@@ -76,4 +88,4 @@ const BlogPosts = async () => {
   );
 };
 
-export default BlogPosts;
+export default BlogPostByCategory;

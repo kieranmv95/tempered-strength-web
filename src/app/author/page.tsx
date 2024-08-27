@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { formatDate, sortByDate } from '@/helpers/dateFormatting';
 import paths from '@/app/pathHelper';
+
 import type { Metadata } from 'next';
-import type { Author } from '@/types/Author';
+import type { Author } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Authors | Tempered Strength',
@@ -73,7 +73,9 @@ const Authors = async () => {
                 <div className="font-bold text-lg">{author.name}</div>
                 <div className="flex gap-3">
                   {author.topics.map((topic) => (
-                    <div key={topic}>{topic}</div>
+                    <div className="text-sm" key={topic}>
+                      {topic}
+                    </div>
                   ))}
                 </div>
               </div>

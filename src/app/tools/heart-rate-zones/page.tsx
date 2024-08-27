@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
+import Link from 'next/link';
 import HeartRateZonesCalc from '@/features/heart-rate-zones-calc';
 import paths from '@/app/pathHelper';
-import Link from 'next/link';
+
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'HR Zones | Tempered Strength',

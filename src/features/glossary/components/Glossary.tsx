@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import type { GlossaryTerm } from '../types/GlossaryTerm';
 import GlossaryItem from './GlossaryItem';
+
+import type { GlossaryTerm } from '../types/GlossaryTerm';
 
 const Glossary = ({ data }: { data: GlossaryTerm[] }) => {
   const [openId, setOpenId] = useState<null | string>(null);

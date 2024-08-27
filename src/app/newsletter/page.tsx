@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import type { NewsletterShort } from '@/types/NewsLetterShort';
-import { formatDate, sortByDate } from '@/helpers/dateFormatting';
+import { formatDate, sortByDate } from '@/helpers';
 import paths from '@/app/pathHelper';
+
 import type { Metadata } from 'next';
+import type { NewsletterShort } from '@/types/NewsLetterShort';
 
 export const metadata: Metadata = {
   title: 'Newsletters | Tempered Strength',

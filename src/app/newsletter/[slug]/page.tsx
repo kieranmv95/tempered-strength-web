@@ -1,10 +1,11 @@
-import { notFound } from 'next/navigation';
-import type { Newsletter } from '@/types/Newsletter';
-import RichTextRenderer from '@/components/RichTextRenderer';
-import { formatDate } from '@/helpers/dateFormatting';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { RichTextRenderer } from '@/components';
+import { formatDate } from '@/helpers';
 import paths from '@/app/pathHelper';
+
 import type { Metadata } from 'next';
+import type { Newsletter } from '@/types';
 
 type NewsletterProps = { params: { slug: string } };
 

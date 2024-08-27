@@ -7,8 +7,9 @@ export type Author = AuthorShort & {
     json: any;
   };
   links: {
-    ig?: string;
-    threads?: string;
+    instagram: string;
+    youtube: string;
+    threads: string;
   };
   topics: string[];
 };
